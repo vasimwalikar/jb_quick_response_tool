@@ -1,0 +1,346 @@
+{{> header}}
+{{> sidebar }}
+
+<!-- Content Wrapper. Contains page content -->
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            User Data
+            <!--<small>Optional description</small>-->
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">user-data</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content container-fluid">
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <!-- Loading (remove the following to stop the loading)-->
+                    <div class="overlay" style="display: none; text-align: center;">
+                        <i class="fa fa-refresh fa-spin"></i>
+                    </div>
+
+                    <!--<div id="modal-loader" class="overlay" style="display: block; text-align: center;">-->
+                        <!--<img src="../assets/dist/img/ajax-loader.gif">-->
+                    <!--</div>-->
+
+
+                    <!-- end loading -->
+                    <div class="box-header">
+                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                            <form role="form" method="post" action="/insertData/" enctype="multipart/form-data">
+                            
+                                <div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-36">
+                                    <input type="file" class="form-control" name="newfile" id="newfile">
+                                </div>
+                                <div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                    <button type="submit" name="upload_data" id="upload_data" class="btn btn-warning">
+                                        Add Data By CSV/EXCEL File
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                             <button data-toggle="modal" data-target="#addDataModel" class="btn btn-info"><i class="fa fa-plus"></i> <b> Add Data By Form</b></button>
+                        </div>
+
+                    </div>
+
+                    
+                    <!-- /.box-header -->
+                    <div class="box-body">
+
+                        <table id="example1" class="table table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th>ACTION</th>
+                                <th>ID</th>
+                                <th>FIRST NAME</th>
+                                <th>LAST NAME</th>
+                                <th>EMAIL</th>
+                                <th>MOBILE NO</th>
+                                <th>PIN CODE</th>
+                                <th>MEMBERSHIP NO</th>
+                                <th title="(SignUp, Renewal, Change Plan)">TYPE</th>
+                                <th>PLAN NAME</th>
+                                <th>BOOKS</th>
+                                <th>MONTHS</th>
+                                <th>COUPON CODE</th>
+                                <th>PROMO CODE</th>
+                                <th>AMOUNT</th>
+                                <th>STATUS</th>
+                                <th>EXPIRY DATE</th>
+                                <th>CREATED AT</th>
+                                <th>UPDATED AT</th>
+                             </tr>
+                            </thead>
+                            <tbody>
+
+                             {{# data}}
+                                <tr>
+                                    <td>
+                                        <button type="button" class="btn bg-purple btn-flat" id="send_req" data-id="{{ID}}">
+                                            Send Request
+                                        </button>
+                                    </td>
+                                    <td>{{ID}}</td>
+                                    <td>{{FIRST_NAME}}</td>
+                                    <td>{{LAST_NAME}}</td>
+                                    <td>{{EMAIL}}</td>
+                                    <td>{{MOBILE_NO}}</td>
+                                    <td>{{PIN_CODE}}</td>
+                                    <td>{{MEMBERSHIP_NO}}</td>
+                                    <td>{{TYPE}}</td>
+                                    <td>{{PLAN_NAME}}</td>
+                                    <td>{{BOOKS}}</td>
+                                    <td>{{MONTHS}}</td>
+                                    <td>{{COUPON_CODE}}</td>
+                                    <td>{{PROMO_CODE}}</td>
+                                    <td>{{AMOUNT}}</td>
+                                    <td>{{STATUS}}</td>
+                                    <td>{{EXPIRY_DATE}}</td>
+                                    <td>{{CREATED_AT}}</td>
+                                    <td>{{UPDATED_AT}}</td>
+                                </tr>
+                            {{/ data}}
+
+                            
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+<div class="modal fade" id="addDataModel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Fill User Data</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" method="post" action="/insertDtataFromInput/" enctype="multipart/form-data">
+                    <div class="box-body">
+                        <div class="form-group col-xs-6">
+                          <label for="Name">FIRST Name</label>
+                          <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Enter First Name">
+                        </div>
+
+                        <div class="form-group col-xs-6">
+                          <label for="Name">LAST Name</label>
+                          <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Enter Last Name">
+                        </div>
+
+                        <div class="form-group col-xs-6">
+                          <label for="Email">Email</label>
+                          <input type="text" class="form-control" name="email" id="email" placeholder="Enter Email">
+                        </div>
+
+                        <div class="form-group col-xs-6">
+                          <label for="Mobile">Mobile</label>
+                          <input type="text" class="form-control" name="mobile" id="mobile" placeholder="Enter Name">
+                        </div>
+
+                        <div class="form-group col-xs-6">
+                          <label for="Pin Code">Pin Code</label>
+                          <input type="text" class="form-control" name="zip" id="zip" placeholder="Enter Zip Code">
+                        </div>
+
+                        <div class="form-group col-xs-6">
+                          <label for="Membership No">Membership No</label>
+                          <input type="text" class="form-control" name="membership_no" id="membership_no" placeholder="Enter Membership No">
+                        </div>
+
+                        <div class="form-group col-xs-6">
+                          <label for="Type">Select Type</label>
+                            <select name="type" id="type" class="form-control">
+                                <option value="signup">SignUp</option>
+                                <option value="renew">Renew</option>
+                                <option value="changeplan">Change Plan</option>
+                            </select>
+                          <!--<input type="text" class="form-control" name="type" id="type" placeholder="Enter Type">-->
+                        </div>
+
+                        <div class="form-group col-xs-6">
+                          <label for="plane_name">Plan Name</label>
+                          <input type="text" class="form-control" name="plane_name" id="plane_name" placeholder="Enter Plane Name">
+                        </div>
+
+                        <div class="form-group col-xs-6">
+                          <label for="books">Books</label>
+                          <input type="text" class="form-control" name="books" id="books" placeholder="Enter No of Books">
+                        </div>
+
+                        <div class="form-group col-xs-6">
+                          <label for="months">Months</label>
+                          <input type="text" class="form-control" name="months" id="months" placeholder="Enter No of Months">
+                        </div>
+
+                        <div class="form-group col-xs-6">
+                          <label for="Coupon Code">Coupon Code</label>
+                          <input type="text" class="form-control" name="coupon_code" id="coupon_code" placeholder="Enter Coupon Code">
+                        </div>
+
+                        <div class="form-group col-xs-6">
+                          <label for="Promo Code">Promo Code</label>
+                          <input type="text" class="form-control" name="promo_code" id="promo_code" placeholder="Enter Promo Code">
+                        </div>
+
+                        <div class="form-group col-xs-6">
+                          <label for="Amount">Amount</label>
+                          <input type="text" class="form-control" name="amount" id="amount" placeholder="Enter Amount">
+                        </div>
+
+                        <div class="form-group col-xs-6">
+                          <label for="Amount">Expiry Date</label>
+                          <div class="input-group date">
+
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" class="form-control pull-right" name="expiry_date" data-date-format="dd-mm-yyyy" id="datepicker">
+                        </div>
+                        </div>
+                    </div>
+                  
+
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+
+{{>footer}}
+
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. -->
+<script>
+  $(function () {
+   
+    
+
+    //Date picker
+    $('#datepicker').datepicker({
+      autoclose: true
+    })
+
+    
+  })
+</script>
+
+<script>
+    $(document).ready(function(){
+
+
+
+
+        $(document).on('click', '#send_req', function(e){
+
+            e.preventDefault();
+
+            var id = $(this).data('id');   // it will get id of clicked row
+
+            $('.overlay').show();      // load ajax loader
+
+
+            $.ajax({
+
+                url: "/send_req/",
+                type: "post",
+                async: false,
+                data:{
+                    "done": 1,
+                    "id": id
+
+                },
+
+                cache: false,
+
+                success: function(data){
+
+                    console.log(data);
+
+                    alert('Request has been sent suceessfuly!')
+
+                    $('.overlay').hide();      // load ajax loader
+                },
+                error: function (res) {
+                    console.log(res.responseText)
+                    $('#dynamic-content').html('<i class="glyphicon glyphicon-info-sign"></i> Something went wrong, Please try again...');
+                    $('#modal-loader').hide();
+                }
+
+            });
+
+        });
+    });
+
+</script>
+<script>
+    $(function () {
+        $('#example1').DataTable({
+            'paging'      : true,
+            'lengthChange': true,
+            'searching'   : true,
+            'ordering'    : true,
+            "order": [[ 1, "desc" ]],
+            'info'        : true,
+            'autoWidth'   : true,
+            "scrollX": true,
+            dom: 'Bfrtip',
+            lengthMenu: [
+                [ 10, 25, 50, -1 ],
+                [ '10 rows', '25 rows', '50 rows', 'Show all' ]
+            ],
+            buttons: [
+                'pageLength', 'csv', 'excel', 'print'
+            ],
+            columnDefs: [ {
+                targets: 6,
+                render: function ( data, type, row ) {
+                    return data.length > 100 ?
+                            data.substr( 0, 100 ) +'…' :
+                            data;
+                }
+            } ]
+
+
+//            buttons: [
+//                'copy', 'csv', 'excel', 'pdf', 'print'
+//            ]
+        })
+    })
+</script>
+
+</body>
+</html>
